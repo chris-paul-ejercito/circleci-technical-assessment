@@ -9,11 +9,12 @@ orbs:
 jobs:
   test:
     executor: node/default
+    parallelism: 2
     steps:
-      - checkout
-      - node/install-packages:
-          cache-path: ~/project/node_modules
-          with-cache: true
+      - run:
+          command: |
+            echo $(circleci tests glob ".test.js")
+            circleci tests glob ".test.js | xargs -n 1 echo
   build:
     executor: node/default
     steps:

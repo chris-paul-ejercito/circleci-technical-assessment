@@ -36,7 +36,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - store_artifacts:
-          path: /bin/final_build
+          path: /build
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

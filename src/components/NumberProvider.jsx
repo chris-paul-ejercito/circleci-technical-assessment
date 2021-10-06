@@ -18,7 +18,6 @@ const NumberProvider = (props) => {
   }
 
   function handleAddButton() {
-    console.log('add');
     if (number) {
       handleSetStoredValue();
     }

@@ -11,6 +11,7 @@ jobs:
     executor: node/default
     parallelism: 2
     steps:
+      - checkout
       - run:
           command: |
             npm test

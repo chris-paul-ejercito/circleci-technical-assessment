@@ -13,8 +13,6 @@ jobs:
     steps:
       - run:
           command: |
-            echo $(circleci tests glob "~project/src/*.test.js")
-            TEST_FILES=$(circleci tests glob "~project/src/*.test.js" | circleci tests split)
             npm test
   build:
     executor: node/default

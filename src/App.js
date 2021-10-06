@@ -1,24 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useContext } from 'react';
+import Keys from './components/Keys'
+import NumberProvider from './components/NumberProvider';
+import { NumberContext } from './components/NumberProvider';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <NumberProvider>
+      <div className="App">
+        <Display />
+        <Keys />
+      </div>
+    </NumberProvider>
+  );
+}
+
+function Display() {
+  const { number, storedNumber } = useContext(NumberContext);
+  return (
+    <div>
+      <h1 className="display">{ !number.length && !storedNumber ? '0' : number || storedNumber}</h1>
+      <h2 className="display">{ !storedNumber ? '' : `${storedNumber} + ${number}` }</h2>
+    </div>    
   );
 }
 

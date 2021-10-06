@@ -14,7 +14,8 @@ jobs:
       - run:
           command: |
             echo $(circleci tests glob "~project/src/*.test.js")
-            circleci tests glob "~project/src/*.test.js" | circleci tests split
+            circleci tests glob "~project/src/*.test.js" | circleci tests split > ~/project/src/
+            npm run test
   build:
     executor: node/default
     steps:

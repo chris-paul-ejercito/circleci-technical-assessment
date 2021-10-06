@@ -23,7 +23,7 @@ jobs:
           with-cache: true
       - run: npm run build
       - store_artifacts:
-          path: ~/project/build/static/js
+          path: ~/project/build/
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows

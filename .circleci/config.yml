@@ -12,6 +12,9 @@ jobs:
     parallelism: 2
     steps:
       - checkout
+      - node/install-packages:
+          cache-path: ~/project/node_modules
+          with-cache: true
       - run:
           command: |
             npm test

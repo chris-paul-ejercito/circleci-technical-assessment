@@ -56,3 +56,4 @@ workflows:
   save-artifacts:
     jobs:
       - build
+      - build_and_save

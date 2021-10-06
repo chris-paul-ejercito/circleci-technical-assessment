@@ -13,7 +13,7 @@ jobs:
     steps:
       - run:
           command: |
-            echo $(circleci tests glob ".test.js")
+            echo $(circleci tests glob "~project/src/*.test.js")
             circleci tests glob ".test.js | xargs -n 1 echo
   build:
     executor: node/default

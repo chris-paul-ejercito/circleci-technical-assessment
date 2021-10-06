@@ -16,21 +16,6 @@ jobs:
           with-cache: true
   build:
     executor: node/default
-    working_directory: /tmp
-    steps:
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            echo "my artifact file" > /tmp/art-1;
-            mkdir /tmp/artifacts;
-            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
-      - store_artifacts:
-          path: /tmp/art-1
-          destination: artifact-file
-      - store_artifacts:
-          path: /tmp/artifacts
-  build_and_save:
-    executor: node/default
     steps:
       - checkout
       - node/install-packages:
@@ -38,7 +23,7 @@ jobs:
           with-cache: true
       - run: npm run build
       - store_artifacts:
-          path: /build/static/
+          path: /build/static/js
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -54,4 +39,3 @@ workflows:
           # If you are using yarn, change the line below from "npm" to "yarn"
           pkg-manager: npm
       - build
-      - build_and_save
